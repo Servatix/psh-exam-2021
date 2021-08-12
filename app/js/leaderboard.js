@@ -13,8 +13,6 @@ function fillBoard(data) {
     const rows = Array.from(board.children)
     const date = new Date(last_update)
 
-    icon.classList.add('rotate')
-
     removeAllRows(rows).then( () => {
         leaderboard.forEach((player, rank) => {
             addRow(player, rank, board)
@@ -22,7 +20,7 @@ function fillBoard(data) {
     })
 
     date_holder.textContent = date.getHours() + ':' + date.getMinutes() + ' hs.'
-    icon.classList.remove('rotate')
+    icon.animate([{ transform: "rotate(-1turn)" }], 1000)
 }
 
 function addRow(player, rank, board) {

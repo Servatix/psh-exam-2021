@@ -138,11 +138,6 @@ body {
     margin: 1pt 1rem;
 }
 
-.refresh-icon.rotate {
-    transform: rotate(-1turn);
-    transition-duration: 1s;
-}
-
 .table-container {
     display: grid;
     grid-column: 2 / span 2;
