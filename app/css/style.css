@@ -68,11 +68,12 @@ body {
     width: 50px;
     color: var(--obj-border);
     background-color: var(--bg-c);
-    border: 1px solid var(--obj-border);
     border-radius: 50px;
     box-shadow: 0 1px 10px var(--obj-border);
     transition: color 500ms;
     text-decoration: none;
+    font-family: 'Material Icons';
+    line-height: 3rem;
     z-index: 666;
 }
 
@@ -85,7 +86,7 @@ body {
 .logo-container {
     display: grid;
     justify-items: right;
-    align-content: end;
+    align-content: flex-end;
     line-height: 5rem;
 }
 
@@ -111,14 +112,14 @@ body {
 
 .title {
     grid-column: span 2;
-    align-self: end;
+    align-self: flex-end;
     font-size: 4rem;
     line-height: 5rem;
 }
 
 .date-container {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     flex-flow: wrap;
     padding: 1rem;
     line-height: 2rem;
