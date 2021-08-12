@@ -1,0 +1,2 @@
+*/5 * * * * php /var/www/html/host_game.php > /proc/1/fd/1 2> /proc/1/fd/2
+ 

@@ -1,0 +1,59 @@
+body, .input, #cmd {
+    background-color: black;
+    color: limegreen;
+    font-family: monospace;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+pre {
+    max-width: 100vh;
+    margin: 0;
+}
+
+.cursor {
+    background-color: unset;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    animation: blink 1s infinite steps(2) 1.5s
+}
+
+@keyframes blink {
+    to {
+        opacity: 0;
+    }
+}
+
+.input {
+    position: relative;
+}
+
+.input, #cmd {
+    color: whitesmoke;
+}
+
+#cmd {
+    width: calc(100% - 20px);
+}
+
+#cmd:focus-visible+.cursor {
+    display: none;
+}
+
+#cmd:focus-visible {
+    outline: none;
+}
+
+#temp, #cmd {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+#temp {
+    position: absolute;
+    height: 0;
+    overflow: hidden;
+    white-space: pre;
+}
