@@ -2,7 +2,6 @@
 
 class GameUser {
     public string $uuid;
-    public int $last_score;
 
     function __construct(
         public string $nickname,
