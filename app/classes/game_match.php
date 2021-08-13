@@ -44,11 +44,8 @@ class GameMatch
 
     function saveStatistics(string $uuid, int $score, string $date)
     {
-        $db = PshDatabase::conn();
+        $db = new PshDatabase;
 
-        $query = $db->prepare("INSERT INTO game_statistics(user_uuid_bin, score, game_date)
-            VALUES( UUID_TO_BIN( ? ), ?, ? );");
-
-        $query->execute([$uuid, $score, $date]);
+        $db->createNewStats($uuid, $score, $date);
     }
 }
