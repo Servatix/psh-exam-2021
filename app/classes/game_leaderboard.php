@@ -4,21 +4,11 @@ class GameLeaderboard
 {
     function getStatistics(int $limit = 10): array
     {
-        $db = PshDatabase::conn();
+        $db = new PshDatabase;
 
-        $last_update = $db
-            ->query("SELECT game_date FROM game_statistics ORDER BY id DESC LIMIT 1")
-            ->fetchColumn();
+        $last_update = $db->getLastUpdate();
 
-        $query = $db->query(
-            "SELECT nickname, thumbnail, SUM(score) AS score
-            FROM game_statistics_view
-            GROUP BY uuid_bin
-            ORDER BY score DESC
-            LIMIT $limit"
-        );
-
-        $stats = $query->fetchAll(PDO::FETCH_ASSOC);
+        $stats = $db->getTopScores($limit);
 
         array_walk(
             $stats, fn(&$row) => $row['thumbnail'] = (new UserImage($row['thumbnail']))->getUrl()

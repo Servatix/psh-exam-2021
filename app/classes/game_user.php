@@ -12,27 +12,13 @@ class GameUser {
 
     function getUUID(): string
     {
-        $db = PshDatabase::conn();
+        $db = new PshDatabase;
 
-        $query = $db->prepare("SELECT uuid FROM users WHERE nickname=?");
-        $query->execute([$this->nickname]);
-        $uuid = $query->fetchColumn();
+        $uuid = $db->findUserIdByNick($this->nickname);
 
         if (!$uuid) {
-            $uuid = $this->registerUser();
+            $uuid = $db->createUser($this->nickname, $this->thumbnail);
         }
-
-        return $uuid;
-    }
-
-    function registerUser(): string
-    {
-        $db = PshDatabase::conn();
-
-        $uuid = $db->query("SELECT UUID()")->fetchColumn();
-
-        $query = $db->prepare("INSERT INTO users(uuid_bin, nickname, thumbnail) VALUES( UUID_TO_BIN( ? ), ?, ? )");
-        $query->execute([$uuid, $this->nickname, $this->thumbnail]);
 
         return $uuid;
     }
